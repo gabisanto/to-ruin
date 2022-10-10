@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+2");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap");
+
+.header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.titleBox {
+  transform: translate(-50%, -50%);
+  width: 80%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Baloo 2", cursive;
+}
+
+.title {
+  text-transform: uppercase;
+  color: #0e1a2e;
+  text-shadow: 5px 3px #fe4365;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+
+.bubble {
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  background-color: #ece5ce;
+  border-radius: 11px;
+  margin-top: 30px;
+  vertical-align: center;
+  margin: 0 auto;
+  box-shadow: 10px 10px #83af9b;
+  font-weight: 800;
+  font-family: "Baloo 2", cursive;
+}
