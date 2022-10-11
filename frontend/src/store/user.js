@@ -1,15 +1,13 @@
-import axios from "axios";
+import apiCalls from "../apis/apiCalls";
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const sendLoginRequest = createAsyncThunk("LOGIN", (data) => {
-  return axios
-    .post("http://localhost:5000/api/user/login", data)
-    .then((res) => res.data);
+  return apiCalls.post("/user/login", data).then((res) => res.data);
 });
 
 export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
-  return axios
-    .post("http://localhost:5000/api/user/logout")
+  return apiCalls
+    .post("/user/logout")
     .then((err) => {
       console.log(err);
     })
@@ -22,8 +20,8 @@ export const favoritesRequest = createAsyncThunk(
     const { user } = thunkAPI.getState();
     const media_type = media.original_title ? "movie" : "tv";
     if (!user.id) throw new Error("You need to be logged in");
-    return axios
-      .put(`http://localhost:5000/api/user/${user.id}/favorite/${media_type}`, {
+    return apiCalls
+      .put(`/api/user/${user.id}/favorite/${media_type}`, {
         id: media.id,
       })
       .then((res) => {

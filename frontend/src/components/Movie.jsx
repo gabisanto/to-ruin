@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router";
-import axios from "axios";
 import Loading from "../commons/Loading";
 import {
   Card,
@@ -19,6 +18,7 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material/";
 /* import ShareIcon from "@mui/icons-material/Share"; */
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import index from "../assets/index.png";
+import apiCalls from "../apis/apiCalls";
 
 /* material ui config */
 
@@ -43,8 +43,8 @@ const Movie = () => {
 
   /* fetching info from the api */
   const requestMedia = useCallback(() => {
-    axios
-      .get(`http://localhost:5000/api/media/request/${type}/${id}`)
+    apiCalls
+      .get(`/media/request/${type}/${id}`)
       .then((res) => res.data)
       .then((data) => setData(data))
       .catch(() => {

@@ -1,5 +1,5 @@
-import axios from "axios";
 import React from "react";
+import apiCalls from "../apis/apiCalls";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -34,8 +34,8 @@ const User = () => {
   const [fetchingTv, setFetchingTv] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/user/${id}`)
+    apiCalls
+      .get(`/user/${id}`)
       .then((data) => {
         !data.data.error ? setUser(data.data) : navigate("/404");
       })
@@ -49,8 +49,8 @@ const User = () => {
       let movieArray = [];
       Promise.all(
         favorite_movie.map((item) =>
-          axios
-            .get(`http://localhost:5000/api/media/request/movie/${item}`)
+          apiCalls
+            .get(`/media/request/movie/${item}`)
             .then((res) => {
               return res.data;
             })
@@ -72,8 +72,8 @@ const User = () => {
       let tvArray = [];
       Promise.all(
         favorite_tv.map((item) =>
-          axios
-            .get(`http://localhost:5000/api/media/request/tv/${item}`)
+          apiCalls
+            .get(`/media/request/tv/${item}`)
             .then((res) => {
               return res.data;
             })

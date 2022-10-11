@@ -2,7 +2,7 @@ import { useState } from "react";
 import AlertMessage from "../commons/AlertMessage";
 import useMatches from "../hooks/useMatches";
 import back06 from "../assets/backgroundtesting/back06.png";
-import axios from "axios";
+import apiCalls from "../apis/apiCalls";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { TextField, Container, Box, Button } from "@mui/material";
@@ -25,8 +25,8 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:5000/api/user/register", data)
+    apiCalls
+      .post("/user/register", data)
       /* handling errors coming from the backend */
       .then(({ data }) => {
         if (!data.error) {

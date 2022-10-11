@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import apiCalls from "../apis/apiCalls";
 import { styled, alpha } from "@mui/material/styles";
 import Drawer from "./Drawer";
 import {
@@ -80,9 +80,7 @@ const Navbar = () => {
 
   const onSubmit = async (data) => {
     try {
-      const resp = await axios.get(
-        `http://localhost:5000/api/media/search/${data.searchInput}`
-      );
+      const resp = await apiCalls.get(`/media/search/${data.searchInput}`);
 
       const results = await resp.data;
       navigate("/results", { state: { results } });

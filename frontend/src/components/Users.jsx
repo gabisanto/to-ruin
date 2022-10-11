@@ -1,18 +1,17 @@
-import axios from "axios";
 import { React, useState, useEffect } from "react";
 import Loading from "../commons/Loading";
 import styles from "../styles/simplePages.module.css";
 import jurassic from "../assets/jurassic.png";
-
 import UserCard from "./UserCard";
+import apiCalls from "../apis/apiCalls";
 
 const Users = () => {
   /* starting the user state and grabbing data from db */
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    return axios
-      .get("http://localhost:5000/api/user/list")
+    return apiCalls
+      .get("/user/list")
       .then((data) => setUsers(data.data))
       .catch((err) => console.log(err));
   }, []);

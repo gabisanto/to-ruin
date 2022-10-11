@@ -5,6 +5,7 @@ import Loading from "../commons/Loading";
 import back12 from "../assets/backgroundtesting/back12.png";
 import "../styles/home.css";
 import useMatches from "../hooks/useMatches";
+import apiCalls from "../apis/apiCalls";
 
 const Home = () => {
   /* media queries custom hook */
@@ -15,13 +16,9 @@ const Home = () => {
   const [tvshows, setTvShows] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/media/movies")
-      .then((data) => setMovies(data.data));
+    apiCalls.get("/media/movies").then((data) => setMovies(data.data));
 
-    axios
-      .get("http://localhost:5000/api/media/tv")
-      .then((data) => setTvShows(data.data));
+    apiCalls.get("/media/tv").then((data) => setTvShows(data.data));
   }, []);
 
   /* the api configuration is set to return 10 results so this if verifies if everything is fetched */

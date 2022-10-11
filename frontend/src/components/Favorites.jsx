@@ -3,6 +3,7 @@ import styles from "../styles/simplePages.module.css";
 import { useSelector } from "react-redux";
 import back13 from "../assets/backgroundtesting/back13.png";
 import useMatches from "../hooks/useMatches";
+import apiCalls from "../apis/apiCalls";
 import axios from "axios";
 import ImageListCards from "../commons/ImageListCards";
 import { ImageList, ImageListItem, ListSubheader } from "@mui/material";
@@ -21,8 +22,8 @@ const Favorites = () => {
     let { favorite_movie } = user;
     setMovies([]);
     favorite_movie.forEach((item) =>
-      axios
-        .get(`http://localhost:5000/api/media/request/movie/${item}`)
+      apiCalls
+        .get(`/media/request/movie/${item}`)
         .then((res) => {
           return res.data;
         })
@@ -38,8 +39,8 @@ const Favorites = () => {
     let { favorite_tv } = user;
     setTv([]);
     favorite_tv.forEach((item) =>
-      axios
-        .get(`http://localhost:5000/api/media/request/tv/${item}`)
+      apiCalls
+        .get(`/media/request/tv/${item}`)
         .then((res) => {
           return res.data;
         })
